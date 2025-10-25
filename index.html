@@ -176,23 +176,109 @@
                     data = result.data;
                     console.log('✅ تم تحميل البيانات من API');
                     render();
+                    return;
                 }
-            } catch (err) {
-                console.log('⚠️ استخدام بيانات تجريبية');
-                data = {
-                    live: [
-                        { id: 1, league: 'الدوري الإنجليزي', leagueFr: 'Premier League', sport: 'football', homeTeam: 'مانشستر سيتي', homeTeamFr: 'Man City', awayTeam: 'ليفربول', awayTeamFr: 'Liverpool', homeScore: 2, awayScore: 1, time: '67\'', status: 'الشوط الثاني', statusFr: '2ème Mi-Temps', url: 'https://www.camel1.live/' },
-                        { id: 2, league: 'الدوري الإسباني', leagueFr: 'La Liga', sport: 'football', homeTeam: 'ريال مدريد', homeTeamFr: 'Real Madrid', awayTeam: 'برشلونة', awayTeamFr: 'Barcelona', homeScore: 1, awayScore: 1, time: '34\'', status: 'الشوط الأول', statusFr: '1ère Mi-Temps', url: 'https://www.camel1.live/' }
-                    ],
-                    upcoming: [
-                        { id: 3, league: 'دوري الأبطال', leagueFr: 'Champions League', sport: 'football', homeTeam: 'بايرن', homeTeamFr: 'Bayern', awayTeam: 'باريس', awayTeamFr: 'PSG', time: '21:00', status: 'قريباً', statusFr: 'Bientôt', url: 'https://www.camel1.live/' }
-                    ],
-                    results: [
-                        { id: 4, league: 'الدوري الألماني', leagueFr: 'Bundesliga', sport: 'football', homeTeam: 'دورتموند', homeTeamFr: 'Dortmund', awayTeam: 'بايرن', awayTeamFr: 'Bayern', homeScore: 2, awayScore: 3, status: 'انتهت', statusFr: 'Terminé' }
-                    ]
-                };
-                render();
+            } catch (apiErr) {
+                console.log('⚠️ API غير متاح، محاولة CORS Proxy...');
             }
+
+            const proxies = [
+                'https://api.allorigins.win/raw?url=',
+                'https://corsproxy.io/?',
+                'https://api.codetabs.com/v1/proxy?quest='
+            ];
+
+            for (const proxy of proxies) {
+                try {
+                    const res = await fetch(proxy + encodeURIComponent('https://www.camel1.live/'), {
+                        method: 'GET',
+                        headers: { 'Accept': 'text/html' }
+                    });
+                    
+                    if (res.ok) {
+                        const html = await res.text();
+                        const extracted = extractMatchesFromHTML(html);
+                        
+                        if (extracted.live.length > 0 || extracted.upcoming.length > 0) {
+                            data = extracted;
+                            console.log('✅ تم استخراج البيانات من Camel Live');
+                            render();
+                            return;
+                        }
+                    }
+                } catch (proxyErr) {
+                    continue;
+                }
+            }
+
+            console.log('📊 استخدام بيانات تجريبية');
+            data = getDemoData();
+            render();
+        }
+
+        function extractMatchesFromHTML(html) {
+            const live = [], upcoming = [];
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            const selectors = ['[class*="match"]', '[class*="game"]', '[class*="card"]', 'article'];
+            let matchElements = [];
+            
+            for (const sel of selectors) {
+                matchElements = doc.querySelectorAll(sel);
+                if (matchElements.length > 2) break;
+            }
+
+            matchElements.forEach((el, idx) => {
+                if (idx >= 20) return;
+                
+                const text = el.textContent;
+                const links = Array.from(el.querySelectorAll('a[href]'));
+                const url = links.find(a => !a.href.includes('javascript') && !a.href.startsWith('#'))?.href || 'https://www.camel1.live/';
+                
+                const teamEls = el.querySelectorAll('[class*="team"]');
+                let teams = Array.from(teamEls).map(t => t.textContent.trim()).filter(t => t.length > 2);
+                
+                if (teams.length < 2) {
+                    const vsMatch = text.match(/([^\d\n]{3,25})\s*(?:vs|ضد|-)\s*([^\d\n]{3,25})/i);
+                    if (vsMatch) teams = [vsMatch[1].trim(), vsMatch[2].trim()];
+                }
+
+                if (teams.length >= 2) {
+                    const isLive = text.toLowerCase().includes('live') || text.includes('مباشر');
+                    const match = {
+                        id: idx + 1,
+                        league: el.querySelector('[class*="league"]')?.textContent.trim() || 'مباراة',
+                        sport: 'football',
+                        homeTeam: teams[0],
+                        awayTeam: teams[1],
+                        status: isLive ? 'مباشر الآن' : 'قريباً',
+                        url: url
+                    };
+                    
+                    if (isLive) live.push(match);
+                    else upcoming.push(match);
+                }
+            });
+
+            return { live, upcoming, results: [] };
+        }
+
+        function getDemoData() {
+            return {
+                live: [
+                    { id: 1, league: 'الدوري الإنجليزي', leagueFr: 'Premier League', sport: 'football', homeTeam: 'مانشستر سيتي', homeTeamFr: 'Man City', awayTeam: 'ليفربول', awayTeamFr: 'Liverpool', homeScore: 2, awayScore: 1, time: '67\'', status: 'الشوط الثاني', statusFr: '2ème Mi-Temps', url: 'https://www.camel1.live/' },
+                    { id: 2, league: 'الدوري الإسباني', leagueFr: 'La Liga', sport: 'football', homeTeam: 'ريال مدريد', homeTeamFr: 'Real Madrid', awayTeam: 'برشلونة', awayTeamFr: 'Barcelona', homeScore: 1, awayScore: 1, time: '34\'', status: 'الشوط الأول', statusFr: '1ère Mi-Temps', url: 'https://www.camel1.live/' }
+                ],
+                upcoming: [
+                    { id: 3, league: 'دوري الأبطال', leagueFr: 'Champions League', sport: 'football', homeTeam: 'بايرن ميونخ', homeTeamFr: 'Bayern Munich', awayTeam: 'باريس سان جيرمان', awayTeamFr: 'Paris SG', time: '21:00', status: 'قريباً', statusFr: 'Bientôt', url: 'https://www.camel1.live/' },
+                    { id: 4, league: 'الدوري الإيطالي', leagueFr: 'Serie A', sport: 'football', homeTeam: 'يوفنتوس', homeTeamFr: 'Juventus', awayTeam: 'إنتر ميلان', awayTeamFr: 'Inter Milan', time: '20:45', status: 'قريباً', statusFr: 'Bientôt', url: 'https://www.camel1.live/' }
+                ],
+                results: [
+                    { id: 5, league: 'الدوري الألماني', leagueFr: 'Bundesliga', sport: 'football', homeTeam: 'دورتموند', homeTeamFr: 'Dortmund', awayTeam: 'بايرن ميونخ', awayTeamFr: 'Bayern', homeScore: 2, awayScore: 3, status: 'انتهت', statusFr: 'Terminé' },
+                    { id: 6, league: 'الدوري الفرنسي', leagueFr: 'Ligue 1', sport: 'football', homeTeam: 'مارسيليا', homeTeamFr: 'Marseille', awayTeam: 'ليون', awayTeamFr: 'Lyon', homeScore: 1, awayScore: 1, status: 'انتهت', statusFr: 'Terminé' }
+                ]
+            };
         }
 
         document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -204,9 +290,11 @@
             });
         });
 
+        data = getDemoData();
         document.documentElement.setAttribute('lang', lang);
         document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
         update();
+        render();
         fetchData();
         setInterval(fetchData, 120000);
     </script>
