@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بث مباشر - مشاهدة المباريات | Streaming Live Sports</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
             --color-white: rgba(255, 255, 255, 1);
             --color-black: rgba(0, 0, 0, 1);
@@ -105,18 +106,14 @@
             }
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: var(--font-family-base);
             background-color: var(--color-background);
             color: var(--color-text);
             line-height: 1.6;
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .header {
@@ -260,9 +257,10 @@
             border: 1px solid var(--color-card-border);
             border-radius: var(--radius-lg);
             padding: var(--space-20);
-            transition: all 0.3s;
+            transition: transform 0.2s, box-shadow 0.2s;
             cursor: pointer;
             box-shadow: var(--shadow-sm);
+            will-change: transform;
         }
 
         .match-card:hover {
@@ -565,82 +563,30 @@
     <script>
         const translations = {
             ar: {
-                siteName: 'بث مباشر',
-                liveNow: 'مباشر الآن',
-                upcoming: 'المباريات القادمة',
-                results: 'النتائج',
-                all: 'الكل',
-                football: 'كرة القدم',
-                basketball: 'كرة السلة',
-                tennis: 'التنس',
-                matches: 'مباريات',
-                premierLeague: 'الدوري الإنجليزي الممتاز',
-                laLiga: 'الدوري الإسباني',
-                serieA: 'الدوري الإيطالي',
-                bundesliga: 'الدوري الألماني',
-                ligue1: 'الدوري الفرنسي',
-                championsLeague: 'دوري أبطال أوروبا',
-                europaLeague: 'الدوري الأوروبي',
-                worldCup: 'كأس العالم',
-                arabLeagues: 'الدوريات العربية',
-                otherLeagues: 'دوريات أخرى',
-                watchLive: '🔴 شاهد مباشر',
-                preview: '📺 معاينة البث',
-                noMatches: 'لا توجد مباريات متاحة',
-                selectStream: 'اختر مصدر البث',
-                stream: 'بث',
-                hdStream: 'بث HD',
-                altStream: 'بث بديل',
-                hqStream: 'بث جودة عالية',
-                vs: 'ضد',
-                finished: 'انتهت',
-                notStarted: 'لم تبدأ بعد',
-                soon: 'قريباً',
-                liveNowStatus: 'مباشر الآن',
-                firstHalf: 'الشوط الأول',
-                secondHalf: 'الشوط الثاني',
-                note: '⚠️ ملاحظة: الروابط توضيحية. للحصول على روابط البث الحقيقية، يجب التكامل مع Camel Live API'
+                siteName: 'بث مباشر', liveNow: 'مباشر الآن', upcoming: 'المباريات القادمة',
+                results: 'النتائج', all: 'الكل', football: 'كرة القدم', basketball: 'كرة السلة',
+                tennis: 'التنس', matches: 'مباريات', watchLive: '🔴 شاهد مباشر',
+                preview: '📺 معاينة البث', noMatches: 'لا توجد مباريات متاحة',
+                selectStream: 'اختر مصدر البث', vs: 'ضد', finished: 'انتهت',
+                notStarted: 'لم تبدأ بعد', soon: 'قريباً', liveNowStatus: 'مباشر الآن',
+                firstHalf: 'الشوط الأول', secondHalf: 'الشوط الثاني',
+                otherLeagues: 'دوريات أخرى'
             },
             fr: {
-                siteName: 'Streaming en Direct',
-                liveNow: 'En Direct',
-                upcoming: 'Matchs à Venir',
-                results: 'Résultats',
-                all: 'Tous',
-                football: 'Football',
-                basketball: 'Basketball',
-                tennis: 'Tennis',
-                matches: 'Matchs',
-                premierLeague: 'Premier League Anglaise',
-                laLiga: 'La Liga Espagnole',
-                serieA: 'Serie A Italienne',
-                bundesliga: 'Bundesliga Allemande',
-                ligue1: 'Ligue 1 Française',
-                championsLeague: 'Ligue des Champions',
-                europaLeague: 'Ligue Europa',
-                worldCup: 'Coupe du Monde',
-                arabLeagues: 'Ligues Arabes',
-                otherLeagues: 'Autres Ligues',
-                watchLive: '🔴 Regarder en Direct',
-                preview: '📺 Aperçu du Stream',
-                noMatches: 'Aucun match disponible',
-                selectStream: 'Choisir une source de stream',
-                stream: 'Stream',
-                hdStream: 'Stream HD',
-                altStream: 'Stream Alternatif',
-                hqStream: 'Stream Haute Qualité',
-                vs: 'vs',
-                finished: 'Terminé',
-                notStarted: 'Pas encore commencé',
-                soon: 'Bientôt',
-                liveNowStatus: 'En Direct',
-                firstHalf: 'Première Mi-Temps',
-                secondHalf: 'Deuxième Mi-Temps',
-                note: '⚠️ Note: Liens de démonstration. Pour obtenir de vrais liens de streaming, vous devez intégrer l\'API Camel Live'
+                siteName: 'Streaming en Direct', liveNow: 'En Direct', upcoming: 'Matchs à Venir',
+                results: 'Résultats', all: 'Tous', football: 'Football', basketball: 'Basketball',
+                tennis: 'Tennis', matches: 'Matchs', watchLive: '🔴 Regarder en Direct',
+                preview: '📺 Aperçu du Stream', noMatches: 'Aucun match disponible',
+                selectStream: 'Choisir une source de stream', vs: 'vs', finished: 'Terminé',
+                notStarted: 'Pas encore commencé', soon: 'Bientôt', liveNowStatus: 'En Direct',
+                firstHalf: 'Première Mi-Temps', secondHalf: 'Deuxième Mi-Temps',
+                otherLeagues: 'Autres Ligues'
             }
         };
 
         let currentLang = localStorage.getItem('language') || 'ar';
+        let matchesData = { live: [], upcoming: [], results: [] };
+        let currentSport = 'all';
 
         function toggleLanguage() {
             currentLang = currentLang === 'ar' ? 'fr' : 'ar';
@@ -662,32 +608,11 @@
             document.getElementById('tab-basketball').textContent = t.basketball;
             document.getElementById('tab-tennis').textContent = t.tennis;
             document.getElementById('langIcon').textContent = currentLang === 'ar' ? '🇫🇷 FR' : '🇸🇦 AR';
-            const placeholder = document.getElementById('streamPlaceholder');
-            if (placeholder) placeholder.textContent = t.selectStream;
         }
 
         function getTranslation(key) {
             return translations[currentLang][key] || key;
         }
-
-        const API_CONFIG = {
-            camelLiveUrl: 'https://www.camel1.live/',
-            updateInterval: 120000,
-            timeout: 20000,
-            retryAttempts: 3,
-            corsProxies: [
-                'https://api.allorigins.win/raw?url=',
-                'https://corsproxy.io/?',
-                'https://api.codetabs.com/v1/proxy?quest=',
-                'https://thingproxy.freeboard.io/fetch/'
-            ]
-        };
-
-        let matchesData = { live: [], upcoming: [], results: [] };
-        let isLoading = false;
-        let lastFetchTime = null;
-        let currentProxyIndex = 0;
-        let currentSport = 'all';
 
         function renderMatches() {
             renderMatchSection('liveMatches', matchesData.live, true);
@@ -704,7 +629,13 @@
                 return;
             }
 
-            const matchesByLeague = groupMatchesByLeague(filteredMatches);
+            const matchesByLeague = {};
+            filteredMatches.forEach(match => {
+                const league = match.league || getTranslation('otherLeagues');
+                if (!matchesByLeague[league]) matchesByLeague[league] = [];
+                matchesByLeague[league].push(match);
+            });
+
             container.innerHTML = Object.entries(matchesByLeague).map(([league, leagueMatches]) => `
                 <div class="league-section">
                     <div class="league-header">
@@ -713,20 +644,35 @@
                         <span class="league-count">${leagueMatches.length} ${getTranslation('matches')}</span>
                     </div>
                     <div class="matches-grid">
-                        ${leagueMatches.map(match => renderMatchCard(match, isLive, isResult)).join('')}
+                        ${leagueMatches.map(match => `
+                            <div class="match-card" onclick="${isLive || (!isResult && match.streams && match.streams.length > 0) ? `openStream(${match.id})` : ''}">
+                                <div class="match-league">
+                                    ${currentLang === 'fr' ? match.leagueFr || match.league : match.league}
+                                    ${match.time ? `<span class="match-time">${match.time}</span>` : ''}
+                                </div>
+                                <div class="match-teams">
+                                    <div class="team">
+                                        <span class="team-name">${currentLang === 'fr' ? match.homeTeamFr || match.homeTeam : match.homeTeam}</span>
+                                        ${match.homeScore !== undefined ? `<span class="team-score">${match.homeScore}</span>` : ''}
+                                    </div>
+                                    <div class="team">
+                                        <span class="team-name">${currentLang === 'fr' ? match.awayTeamFr || match.awayTeam : match.awayTeam}</span>
+                                        ${match.awayScore !== undefined ? `<span class="team-score">${match.awayScore}</span>` : ''}
+                                    </div>
+                                </div>
+                                <div class="match-status">${currentLang === 'fr' ? match.statusFr || match.status : match.status}</div>
+                                ${!isResult && match.streams && match.streams.length > 0 ? `
+                                    <div class="match-actions">
+                                        <button class="btn btn-primary" onclick="event.stopPropagation(); openStream(${match.id})">
+                                            ${isLive ? getTranslation('watchLive') : getTranslation('preview')}
+                                        </button>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        `).join('')}
                     </div>
                 </div>
             `).join('');
-        }
-
-        function groupMatchesByLeague(matches) {
-            const grouped = {};
-            matches.forEach(match => {
-                const league = match.league || getTranslation('otherLeagues');
-                if (!grouped[league]) grouped[league] = [];
-                grouped[league].push(match);
-            });
-            return grouped;
         }
 
         function getLeagueIcon(league) {
@@ -745,7 +691,7 @@
         }
 
         function getLeagueFrenchName(league) {
-            const frenchNames = {
+            const names = {
                 'الدوري الإنجليزي الممتاز': 'Premier League Anglaise',
                 'الدوري الإسباني': 'La Liga Espagnole',
                 'الدوري الإيطالي': 'Serie A Italienne',
@@ -757,36 +703,7 @@
                 'دوريات عربية': 'Ligues Arabes',
                 'دوريات أخرى': 'Autres Ligues'
             };
-            return frenchNames[league] || league;
-        }
-
-        function renderMatchCard(match, isLive, isResult) {
-            return `
-                <div class="match-card" onclick="${isLive || (!isResult && match.streams && match.streams.length > 0) ? `openStream(${match.id})` : ''}">
-                    <div class="match-league">
-                        ${currentLang === 'fr' ? match.leagueFr || match.league : match.league}
-                        ${match.time ? `<span class="match-time">${match.time}</span>` : ''}
-                    </div>
-                    <div class="match-teams">
-                        <div class="team">
-                            <span class="team-name">${currentLang === 'fr' ? match.homeTeamFr || match.homeTeam : match.homeTeam}</span>
-                            ${match.homeScore !== undefined ? `<span class="team-score">${match.homeScore}</span>` : ''}
-                        </div>
-                        <div class="team">
-                            <span class="team-name">${currentLang === 'fr' ? match.awayTeamFr || match.awayTeam : match.awayTeam}</span>
-                            ${match.awayScore !== undefined ? `<span class="team-score">${match.awayScore}</span>` : ''}
-                        </div>
-                    </div>
-                    <div class="match-status">${currentLang === 'fr' ? match.statusFr || match.status : match.status}</div>
-                    ${!isResult && match.streams && match.streams.length > 0 ? `
-                        <div class="match-actions">
-                            <button class="btn btn-primary" onclick="event.stopPropagation(); openStream(${match.id})">
-                                ${isLive ? getTranslation('watchLive') : getTranslation('preview')}
-                            </button>
-                        </div>
-                    ` : ''}
-                </div>
-            `;
+            return names[league] || league;
         }
 
         function openStream(matchId) {
@@ -809,23 +726,30 @@
                 </button>
             `).join('');
 
-            streamContainer.innerHTML = `<div style="color: var(--color-white);">${getTranslation('note')}</div>`;
+            streamContainer.innerHTML = `<div style="color: var(--color-white); text-align: center; padding: var(--space-20);">جاري التحميل...</div>`;
             modal.classList.add('active');
+            
+            setTimeout(() => loadStream(match.streams[0].url, document.querySelector('.stream-btn.active')), 300);
         }
 
         function loadStream(url, button) {
             const streamContainer = document.getElementById('streamContainer');
-            const allBtns = document.querySelectorAll('.stream-btn');
-            allBtns.forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.stream-btn').forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-            streamContainer.innerHTML = `<iframe src="${url}" allowfullscreen></iframe>`;
+            
+            const iframe = document.createElement('iframe');
+            iframe.src = url;
+            iframe.allowFullscreen = true;
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            iframe.sandbox = "allow-same-origin allow-scripts allow-popups allow-forms";
+            iframe.style.cssText = "width: 100%; height: 100%; border: none; border-radius: var(--radius-md);";
+            streamContainer.innerHTML = '';
+            streamContainer.appendChild(iframe);
         }
 
         function closeModal() {
-            const modal = document.getElementById('streamModal');
-            modal.classList.remove('active');
-            const streamContainer = document.getElementById('streamContainer');
-            streamContainer.innerHTML = `<div id="streamPlaceholder">${getTranslation('selectStream')}</div>`;
+            document.getElementById('streamModal').classList.remove('active');
+            document.getElementById('streamContainer').innerHTML = `<div id="streamPlaceholder">${getTranslation('selectStream')}</div>`;
         }
 
         document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -841,297 +765,51 @@
             if (e.target.id === 'streamModal') closeModal();
         });
 
-        async function fetchFromCamelLive() {
-            if (isLoading) return null;
-            isLoading = true;
-            try {
-                console.log('🔄 جاري الاتصال بـ Camel Live...');
-                for (let attempt = 0; attempt < API_CONFIG.retryAttempts; attempt++) {
-                    for (let i = 0; i < API_CONFIG.corsProxies.length; i++) {
-                        try {
-                            const proxy = API_CONFIG.corsProxies[currentProxyIndex];
-                            const url = proxy + encodeURIComponent(API_CONFIG.camelLiveUrl);
-                            console.log(`محاولة ${attempt + 1}.${i + 1}: ${proxy.split('//')[1].split('/')[0]}`);
-                            const controller = new AbortController();
-                            const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.timeout);
-                            const response = await fetch(url, {
-                                method: 'GET',
-                                signal: controller.signal,
-                                headers: {
-                                    'Accept': 'text/html,application/xhtml+xml',
-                                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-                                    'Cache-Control': 'no-cache'
-                                }
-                            });
-                            clearTimeout(timeoutId);
-                            if (response.ok) {
-                                const html = await response.text();
-                                if (html.length < 100) {
-                                    console.warn('⚠️ استجابة قصيرة جداً');
-                                    continue;
-                                }
-                                const parser = new DOMParser();
-                                const doc = parser.parseFromString(html, 'text/html');
-                                const data = parseMatchesFromHTML(doc);
-                                if (data && (data.live.length > 0 || data.upcoming.length > 0)) {
-                                    console.log('✅ تم الاتصال بنجاح!');
-                                    console.log(`📊 البيانات: ${data.live.length} مباشر, ${data.upcoming.length} قادمة, ${data.results.length} نتائج`);
-                                    lastFetchTime = new Date();
-                                    localStorage.setItem('lastSuccessfulProxy', currentProxyIndex.toString());
-                                    return data;
-                                }
-                            }
-                            currentProxyIndex = (currentProxyIndex + 1) % API_CONFIG.corsProxies.length;
-                        } catch (err) {
-                            console.warn(`فشل Proxy ${i + 1}:`, err.message);
-                            currentProxyIndex = (currentProxyIndex + 1) % API_CONFIG.corsProxies.length;
-                            if (i < API_CONFIG.corsProxies.length - 1) {
-                                await new Promise(resolve => setTimeout(resolve, 500));
-                            }
-                            continue;
-                        }
-                    }
-                    if (attempt < API_CONFIG.retryAttempts - 1) {
-                        console.log('⏳ انتظار قبل المحاولة التالية...');
-                        await new Promise(resolve => setTimeout(resolve, 2000));
-                    }
+        matchesData = {
+            live: [
+                {
+                    id: 1, league: 'الدوري الإنجليزي الممتاز', leagueFr: 'Premier League Anglaise', sport: 'football',
+                    homeTeam: 'مانشستر سيتي', homeTeamFr: 'Manchester City', awayTeam: 'ليفربول', awayTeamFr: 'Liverpool',
+                    homeScore: 2, awayScore: 1, time: '67\'', status: 'الشوط الثاني', statusFr: 'Deuxième Mi-Temps',
+                    streams: [
+                        { name: 'بث 1', nameFr: 'Stream 1', url: 'https://www.camel1.live/' },
+                        { name: 'بث 2', nameFr: 'Stream 2', url: 'https://www.camel1.live/' }
+                    ]
+                },
+                {
+                    id: 2, league: 'الدوري الإسباني', leagueFr: 'La Liga Espagnole', sport: 'football',
+                    homeTeam: 'ريال مدريد', homeTeamFr: 'Real Madrid', awayTeam: 'برشلونة', awayTeamFr: 'FC Barcelone',
+                    homeScore: 1, awayScore: 1, time: '34\'', status: 'الشوط الأول', statusFr: 'Première Mi-Temps',
+                    streams: [
+                        { name: 'بث 1', nameFr: 'Stream 1', url: 'https://www.camel1.live/' },
+                        { name: 'بث 2', nameFr: 'Stream 2', url: 'https://www.camel1.live/' }
+                    ]
                 }
-                throw new Error('فشلت جميع محاولات الاتصال');
-            } catch (error) {
-                console.error('❌ خطأ:', error.message);
-                console.log('📊 التبديل إلى البيانات التجريبية');
-                return generateDemoData();
-            } finally {
-                isLoading = false;
-            }
-        }
-        
-        function generateDemoData() {
-            console.log('📊 استخدام بيانات تجريبية');
-            return {
-                live: [
-                    {
-                        id: 1, league: 'الدوري الإنجليزي الممتاز', leagueFr: 'Premier League Anglaise', sport: 'football',
-                        homeTeam: 'مانشستر سيتي', homeTeamFr: 'Manchester City', awayTeam: 'ليفربول', awayTeamFr: 'Liverpool',
-                        homeScore: 2, awayScore: 1, time: '67\'', status: 'الشوط الثاني', statusFr: 'Deuxième Mi-Temps',
-                        streams: [
-                            { name: 'بث HD', nameFr: 'Stream HD', url: 'https://www.camel1.live/live/match1' },
-                            { name: 'بث بديل', nameFr: 'Stream Alternatif', url: 'https://www.camel1.live/stream/match1' },
-                            { name: 'بث جودة عالية', nameFr: 'Stream HQ', url: 'https://www.camel1.live/hd/match1' }
-                        ]
-                    },
-                    {
-                        id: 2, league: 'الدوري الإسباني', leagueFr: 'La Liga Espagnole', sport: 'football',
-                        homeTeam: 'ريال مدريد', homeTeamFr: 'Real Madrid', awayTeam: 'برشلونة', awayTeamFr: 'FC Barcelone',
-                        homeScore: 1, awayScore: 1, time: '34\'', status: 'الشوط الأول', statusFr: 'Première Mi-Temps',
-                        streams: [
-                            { name: 'بث 1', nameFr: 'Stream 1', url: 'https://www.camel1.live/live/match2' },
-                            { name: 'بث 2', nameFr: 'Stream 2', url: 'https://www.camel1.live/stream/match2' }
-                        ]
-                    }
-                ],
-                upcoming: [
-                    {
-                        id: 3, league: 'دوري أبطال أوروبا', leagueFr: 'Ligue des Champions', sport: 'football',
-                        homeTeam: 'بايرن ميونخ', homeTeamFr: 'Bayern Munich', awayTeam: 'باريس سان جيرمان', awayTeamFr: 'Paris Saint-Germain',
-                        time: '21:00', status: 'لم تبدأ بعد', statusFr: 'Pas encore commencé',
-                        streams: [
-                            { name: 'بث 1', nameFr: 'Stream 1', url: 'https://www.camel1.live/live/match3' },
-                            { name: 'بث 2', nameFr: 'Stream 2', url: 'https://www.camel1.live/stream/match3' }
-                        ]
-                    },
-                    {
-                        id: 4, league: 'الدوري الإيطالي', leagueFr: 'Serie A Italienne', sport: 'football',
-                        homeTeam: 'يوفنتوس', homeTeamFr: 'Juventus', awayTeam: 'إنتر ميلان', awayTeamFr: 'Inter Milan',
-                        time: '20:45', status: 'قريباً', statusFr: 'Bientôt',
-                        streams: [{ name: 'بث مباشر', nameFr: 'Stream Live', url: 'https://www.camel1.live/live/match4' }]
-                    }
-                ],
-                results: [
-                    {
-                        id: 5, league: 'الدوري الألماني', leagueFr: 'Bundesliga Allemande', sport: 'football',
-                        homeTeam: 'دورتموند', homeTeamFr: 'Borussia Dortmund', awayTeam: 'بايرن ميونخ', awayTeamFr: 'Bayern Munich',
-                        homeScore: 2, awayScore: 3, status: 'انتهت', statusFr: 'Terminé', streams: []
-                    }
-                ]
-            };
-        }
+            ],
+            upcoming: [
+                {
+                    id: 3, league: 'دوري أبطال أوروبا', leagueFr: 'Ligue des Champions', sport: 'football',
+                    homeTeam: 'بايرن ميونخ', homeTeamFr: 'Bayern Munich', awayTeam: 'باريس سان جيرمان', awayTeamFr: 'Paris Saint-Germain',
+                    time: '21:00', status: 'لم تبدأ بعد', statusFr: 'Pas encore commencé',
+                    streams: [
+                        { name: 'بث 1', nameFr: 'Stream 1', url: 'https://www.camel1.live/' },
+                        { name: 'بث 2', nameFr: 'Stream 2', url: 'https://www.camel1.live/' }
+                    ]
+                }
+            ],
+            results: [
+                {
+                    id: 5, league: 'الدوري الألماني', leagueFr: 'Bundesliga Allemande', sport: 'football',
+                    homeTeam: 'دورتموند', homeTeamFr: 'Borussia Dortmund', awayTeam: 'بايرن ميونخ', awayTeamFr: 'Bayern Munich',
+                    homeScore: 2, awayScore: 3, status: 'انتهت', statusFr: 'Terminé', streams: []
+                }
+            ]
+        };
 
-        function parseMatchesFromHTML(doc) {
-            const live = [], upcoming = [], results = [];
-            try {
-                const possibleSelectors = ['article', '.card', '.item', '.box', '[class*="match"]', '[class*="game"]', '[class*="fixture"]', '[class*="event"]', '[data-match]', '[data-game]'];
-                let matchElements = [];
-                for (const selector of possibleSelectors) {
-                    const elements = doc.querySelectorAll(selector);
-                    if (elements.length > 2) {
-                        matchElements = elements;
-                        console.log(`✅ عثر على ${elements.length} عناصر: ${selector}`);
-                        break;
-                    }
-                }
-                if (matchElements.length === 0) {
-                    console.warn('⚠️ لم يتم العثور على مباريات');
-                    return null;
-                }
-                let validMatches = 0;
-                matchElements.forEach((element, index) => {
-                    try {
-                        const match = extractMatchData(element, index);
-                        if (match && match.homeTeam && match.awayTeam) {
-                            validMatches++;
-                            if (match.isLive) live.push(match);
-                            else if (match.isFinished) results.push(match);
-                            else upcoming.push(match);
-                        }
-                    } catch (err) {}
-                });
-                console.log(`📊 مباريات صالحة: ${validMatches} (${live.length} مباشر, ${upcoming.length} قادمة, ${results.length} نتائج)`);
-                if (validMatches === 0) return null;
-                return { live, upcoming, results };
-            } catch (error) {
-                console.error('خطأ في التحليل:', error);
-                return null;
-            }
-        }
-
-        function extractMatchData(element, index) {
-            const match = { id: Date.now() + index, sport: 'football', streams: [] };
-            const text = element.textContent;
-            const teamSelectors = ['h3', 'h4', 'h5', '.team', '[class*="team"]', '.name', 'strong', 'b', 'span'];
-            const teams = [];
-            for (const selector of teamSelectors) {
-                const elements = element.querySelectorAll(selector);
-                if (elements.length >= 2) {
-                    const team1 = elements[0].textContent.trim();
-                    const team2 = elements[1].textContent.trim();
-                    if (team1.length > 2 && team2.length > 2 && team1 !== team2) {
-                        teams.push(team1, team2);
-                        break;
-                    }
-                }
-            }
-            if (teams.length < 2) {
-                const vsMatch = text.match(/([^0-9\n]{3,30})\s*(?:vs|ضد|-)\s*([^0-9\n]{3,30})/i);
-                if (vsMatch) teams.push(vsMatch[1].trim(), vsMatch[2].trim());
-            }
-            match.homeTeam = teams[0] || null;
-            match.awayTeam = teams[1] || null;
-            if (!match.homeTeam || !match.awayTeam) return null;
-            const scoreMatch = text.match(/(\d+)\s*[-:]\s*(\d+)/);
-            if (scoreMatch) {
-                match.homeScore = parseInt(scoreMatch[1]);
-                match.awayScore = parseInt(scoreMatch[2]);
-            }
-            const timeMatch = text.match(/(\d{1,2}:\d{2}|الآن|live|\d+')/i);
-            if (timeMatch) match.time = timeMatch[0];
-            const leagueSelectors = ['.league', '.tournament', '.competition', '[class*="league"]', '[class*="tournament"]', 'small', '.subtitle'];
-            for (const selector of leagueSelectors) {
-                const el = element.querySelector(selector);
-                if (el && el.textContent.trim().length > 3) {
-                    match.league = el.textContent.trim();
-                    break;
-                }
-            }
-            if (!match.league) {
-                const leagueMatch = text.match(/(دوري|كأس|بطولة|league|cup|champions)[^0-9\n]{3,40}/i);
-                if (leagueMatch) match.league = leagueMatch[0].trim().substring(0, 40);
-            }
-            match.league = match.league || (currentLang === 'fr' ? 'Match Amical' : 'مباراة ودية');
-            match.league = normalizeLeagueName(match.league);
-            const lowerText = text.toLowerCase();
-            match.isLive = lowerText.includes('live') || lowerText.includes('مباشر') || lowerText.includes('بث') || match.homeScore !== undefined;
-            match.isFinished = lowerText.includes('انتهت') || lowerText.includes('finished') || lowerText.includes('ft') || lowerText.includes('نهاية');
-            match.status = match.isLive ? 'مباشر الآن' : match.isFinished ? 'انتهت' : 'قريباً';
-            const links = element.querySelectorAll('a[href]');
-            links.forEach((link, i) => {
-                const href = link.getAttribute('href');
-                if (href && !href.startsWith('#') && !href.includes('javascript')) {
-                    const fullUrl = href.startsWith('http') ? href : API_CONFIG.camelLiveUrl + href.replace(/^\//, '');
-                    match.streams.push({ name: link.textContent.trim() || `بث ${i + 1}`, url: fullUrl });
-                }
-            });
-            if (match.streams.length === 0 && (match.isLive || !match.isFinished)) {
-                match.streams.push(
-                    { name: 'بث مباشر', url: `${API_CONFIG.camelLiveUrl}live/${match.id}` },
-                    { name: 'بث بديل', url: `${API_CONFIG.camelLiveUrl}stream/${match.id}` }
-                );
-            }
-            return match;
-        }
-
-        function normalizeLeagueName(league) {
-            const leagueMap = {
-                'premier league': 'الدوري الإنجليزي الممتاز', 'epl': 'الدوري الإنجليزي الممتاز', 'english premier': 'الدوري الإنجليزي الممتاز',
-                'la liga': 'الدوري الإسباني', 'spanish league': 'الدوري الإسباني', 'liga': 'الدوري الإسباني',
-                'serie a': 'الدوري الإيطالي', 'italian league': 'الدوري الإيطالي', 'calcio': 'الدوري الإيطالي',
-                'bundesliga': 'الدوري الألماني', 'german league': 'الدوري الألماني',
-                'ligue 1': 'الدوري الفرنسي', 'french league': 'الدوري الفرنسي',
-                'champions league': 'دوري أبطال أوروبا', 'ucl': 'دوري أبطال أوروبا', 'uefa champions': 'دوري أبطال أوروبا',
-                'europa league': 'الدوري الأوروبي', 'uel': 'الدوري الأوروبي',
-                'world cup': 'كأس العالم', 'fifa world cup': 'كأس العالم',
-                'saudi league': 'دوريات عربية', 'egyptian league': 'دوريات عربية',
-                'قطر': 'دوريات عربية', 'الإمارات': 'دوريات عربية', 'السعودية': 'دوريات عربية', 'مصر': 'دوريات عربية'
-            };
-            const lowerLeague = league.toLowerCase();
-            for (const [key, value] of Object.entries(leagueMap)) {
-                if (lowerLeague.includes(key)) return value;
-            }
-            return league;
-        }
-
-        async function updateMatches() {
-            if (isLoading) {
-                console.log('⏳ جاري التحديث...');
-                return;
-            }
-            console.log('🔄 بدء التحديث...');
-            const data = await fetchFromCamelLive();
-            if (data && (data.live.length > 0 || data.upcoming.length > 0)) {
-                matchesData = data;
-                console.log(`✅ نجح: ${data.live.length} مباشر, ${data.upcoming.length} قادمة`);
-            } else {
-                console.log('📊 استخدام بيانات تجريبية');
-                matchesData = generateDemoData();
-            }
-            renderMatches();
-        }
-
-        (async function init() {
-            console.log('🚀 تحميل الموقع...');
-            console.log('📍 البيئة: GitHub + Vercel');
-            currentLang = localStorage.getItem('language') || 'ar';
-            document.documentElement.setAttribute('lang', currentLang);
-            document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-            updateUILanguage();
-            const savedProxy = localStorage.getItem('lastSuccessfulProxy');
-            if (savedProxy) {
-                currentProxyIndex = parseInt(savedProxy);
-                console.log('♻️ استخدام Proxy الناجح السابق');
-            }
-            matchesData = generateDemoData();
-            renderMatches();
-            setTimeout(() => { updateMatches(); }, 1000);
-        })();
-
-        setInterval(updateMatches, API_CONFIG.updateInterval);
-        document.addEventListener('visibilitychange', () => {
-            if (!document.hidden && lastFetchTime) {
-                const elapsed = new Date() - lastFetchTime;
-                if (elapsed > API_CONFIG.updateInterval) {
-                    console.log('🔄 تحديث بعد العودة للصفحة');
-                    updateMatches();
-                }
-            }
-        });
-        window.addEventListener('error', (e) => { console.error('⚠️ خطأ عام:', e.message); });
-        window.addEventListener('beforeunload', () => {
-            if (matchesData && matchesData.live.length > 0) {
-                try {
-                    localStorage.setItem('cachedMatches', JSON.stringify({ data: matchesData, timestamp: Date.now() }));
-                } catch (e) { console.warn('فشل حفظ البيانات المؤقتة'); }
-            }
-        });
+        document.documentElement.setAttribute('lang', currentLang);
+        document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+        updateUILanguage();
+        renderMatches();
     </script>
 </body>
 </html>
