@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بث مباشر - مشاهدة المباريات | Streaming Live Sports</title>
+    <style>
+        :root {
+            --color-white: rgba(255, 255, 255, 1);
+            --color-black: rgba(0, 0, 0, 1);
+            --color-cream-50: rgba(252, 252, 249, 1);
+            --color-cream-100: rgba(255, 255, 253, 1);
+            --color-gray-200: rgba(245, 245, 245, 1);
+            --color-gray-300: rgba(167, 169, 169, 1);
+            --color-gray-400: rgba(119, 124, 124, 1);
+            --color-slate-500: rgba(98, 108, 113, 1);
+            --color-brown-600: rgba(94, 82, 64, 1);
+            --color-charcoal-700: rgba(31, 33, 33, 1);
+            --color-charcoal-800: rgba(38, 40, 40, 1);
+            --color-slate-900: rgba(19, 52, 59, 1);
+            --color-teal-300: rgba(50, 184, 198, 1);
+            --color-teal-400: rgba(45, 166, 178, 1);
+            --color-teal-500: rgba(33, 128, 141, 1);
+            --color-teal-600: rgba(29, 116, 128, 1);
+            --color-teal-700: rgba(26, 104, 115, 1);
+            --color-red-400: rgba(255, 84, 89, 1);
+            --color-red-500: rgba(192, 21, 47, 1);
+            --color-orange-400: rgba(230, 129, 97, 1);
+            --color-orange-500: rgba(168, 75, 47, 1);
+            
+            --color-brown-600-rgb: 94, 82, 64;
+            --color-teal-500-rgb: 33, 128, 141;
+            --color-slate-900-rgb: 19, 52, 59;
+            --color-slate-500-rgb: 98, 108, 113;
+            --color-red-500-rgb: 192, 21, 47;
+            
+            --color-background: var(--color-cream-50);
+            --color-surface: var(--color-cream-100);
+            --color-text: var(--color-slate-900);
+            --color-text-secondary: var(--color-slate-500);
+            --color-primary: var(--color-teal-500);
+            --color-primary-hover: var(--color-teal-600);
+            --color-primary-active: var(--color-teal-700);
+            --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+            --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+            --color-error: var(--color-red-500);
+            --color-success: var(--color-teal-500);
+            --color-warning: var(--color-orange-500);
+            
+            --font-family-base: 'Segoe UI', Tahoma, Arial, sans-serif;
+            --font-size-xs: 11px;
+            --font-size-sm: 12px;
+            --font-size-base: 14px;
+            --font-size-md: 14px;
+            --font-size-lg: 16px;
+            --font-size-xl: 18px;
+            --font-size-2xl: 20px;
+            --font-size-3xl: 24px;
+            --font-size-4xl: 30px;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 550;
+            --font-weight-bold: 600;
+            
+            --space-4: 4px;
+            --space-8: 8px;
+            --space-12: 12px;
+            --space-16: 16px;
+            --space-20: 20px;
+            --space-24: 24px;
+            --space-32: 32px;
+            
+            --radius-sm: 6px;
+            --radius-base: 8px;
+            --radius-md: 10px;
+            --radius-lg: 12px;
+            --radius-full: 9999px;
+            
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-gray-400-rgb: 119, 124, 124;
+                --color-teal-300-rgb: 50, 184, 198;
+                --color-gray-300-rgb: 167, 169, 169;
+                --color-gray-200-rgb: 245, 245, 245;
+                
+                --color-background: var(--color-charcoal-700);
+                --color-surface: var(--color-charcoal-800);
+                --color-text: var(--color-gray-200);
+                --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+                --color-primary: var(--color-teal-300);
+                --color-primary-hover: var(--color-teal-400);
+                --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+                --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+                --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+                --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+                --color-error: var(--color-red-400);
+                --color-success: var(--color-teal-300);
+                --color-warning: var(--color-orange-400);
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-base);
+            background-color: var(--color-background);
+            color: var(--color-text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--space-16) var(--space-24);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: var(--space-8);
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: var(--space-8) var(--space-16);
+            background: transparent;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            color: var(--color-text);
+            cursor: pointer;
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            background: var(--color-secondary);
+        }
+
+        .tab-btn.active {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        .league-section {
+            margin-bottom: var(--space-32);
+        }
+
+        .league-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-12);
+            margin-bottom: var(--space-20);
+            padding: var(--space-16);
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-card-border);
+        }
+
+        .league-icon {
+            font-size: var(--font-size-3xl);
+        }
+
+        .league-name {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text);
+        }
+
+        .league-count {
+            background: var(--color-secondary);
+            padding: var(--space-4) var(--space-12);
+            border-radius: var(--radius-full);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-24);
+        }
+
+        .section-title {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-20);
+            color: var(--color-text);
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+        }
+
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-4);
+            background: var(--color-error);
+            color: var(--color-white);
+            padding: var(--space-4) var(--space-12);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-bold);
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-white);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .matches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: var(--space-20);
+        }
+
+        .match-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-card-border);
+            border-radius: var(--radius-lg);
+            padding: var(--space-20);
+            transition: all 0.3s;
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .match-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+            border-color: var(--color-primary);
+        }
+
+        .match-league {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            margin-bottom: var(--space-12);
+            display: flex;
+            align-items: center;
+            gap: var(--space-8);
+        }
+
+        .match-time {
+            background: var(--color-secondary);
+            padding: var(--space-4) var(--space-8);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            color: var(--color-text-secondary);
+        }
+
+        .match-teams {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-12);
+            margin-bottom: var(--space-16);
+        }
+
+        .team {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-12);
+        }
+
+        .team-name {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text);
+            flex: 1;
+        }
+
+        .team-score {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-primary);
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .match-status {
+            text-align: center;
+            padding: var(--space-8) 0;
+            margin: var(--space-12) 0;
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .match-actions {
+            display: flex;
+            gap: var(--space-8);
+        }
+
+        .btn {
+            flex: 1;
+            padding: var(--space-8) var(--space-16);
+            border: none;
+            border-radius: var(--radius-base);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .btn-secondary {
+            background: var(--color-secondary);
+            color: var(--color-text);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-secondary-hover);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-20);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .modal-header {
+            padding: var(--space-20);
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text);
+        }
+
+        .close-btn {
+            background: var(--color-secondary);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-xl);
+            color: var(--color-text);
+            transition: all 0.2s;
+        }
+
+        .close-btn:hover {
+            background: var(--color-secondary-hover);
+        }
+
+        .modal-body {
+            padding: var(--space-20);
+        }
+
+        .stream-container {
+            background: var(--color-black);
+            border-radius: var(--radius-md);
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-20);
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: var(--radius-md);
+        }
+
+        .stream-options {
+            display: flex;
+            gap: var(--space-8);
+            flex-wrap: wrap;
+        }
+
+        .stream-btn {
+            padding: var(--space-8) var(--space-16);
+            background: var(--color-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-base);
+            color: var(--color-text);
+            cursor: pointer;
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            transition: all 0.2s;
+        }
+
+        .stream-btn:hover {
+            background: var(--color-secondary-hover);
+        }
+
+        .stream-btn.active {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: var(--space-32);
+            color: var(--color-text-secondary);
+        }
+
+        .empty-state-icon {
+            font-size: 64px;
+            margin-bottom: var(--space-16);
+            opacity: 0.3;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: var(--space-16);
+            }
+
+            .nav-tabs {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .matches-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                max-width: 100%;
+                margin: var(--space-16);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span>⚽</span>
+                <span id="siteName">بث مباشر</span>
+            </div>
+            <div style="display: flex; gap: var(--space-16); align-items: center; flex-wrap: wrap;">
+                <nav class="nav-tabs">
+                    <button class="tab-btn active" data-sport="all" id="tab-all">الكل</button>
+                    <button class="tab-btn" data-sport="football" id="tab-football">كرة القدم</button>
+                    <button class="tab-btn" data-sport="basketball" id="tab-basketball">كرة السلة</button>
+                    <button class="tab-btn" data-sport="tennis" id="tab-tennis">التنس</button>
+                </nav>
+                <button class="btn-secondary" onclick="toggleLanguage()" style="padding: var(--space-8) var(--space-16); border-radius: var(--radius-base); border: 1px solid var(--color-border); cursor: pointer; font-size: var(--font-size-base); font-weight: var(--font-weight-medium);">
+                    <span id="langIcon">🇫🇷 FR</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 class="section-title">
+            <span class="live-badge">
+                <span class="live-dot"></span>
+                <span id="liveTitle">مباشر الآن</span>
+            </span>
+        </h2>
+        <div id="liveMatches"></div>
+
+        <h2 class="section-title" style="margin-top: var(--space-32)" id="upcomingTitle">المباريات القادمة</h2>
+        <div id="upcomingMatches"></div>
+
+        <h2 class="section-title" style="margin-top: var(--space-32)" id="resultsTitle">النتائج</h2>
+        <div id="resultsMatches"></div>
+    </main>
+
+    <div id="streamModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle"></div>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="stream-container" id="streamContainer">
+                    <div id="streamPlaceholder">اختر مصدر البث</div>
+                </div>
+                <div class="stream-options" id="streamOptions"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            ar: {
+                siteName: 'بث مباشر',
+                liveNow: 'مباشر الآن',
+                upcoming: 'المباريات القادمة',
+                results: 'النتائج',
+                all: 'الكل',
+                football: 'كرة القدم',
+                basketball: 'كرة السلة',
+                tennis: 'التنس',
+                matches: 'مباريات',
+                premierLeague: 'الدوري الإنجليزي الممتاز',
+                laLiga: 'الدوري الإسباني',
+                serieA: 'الدوري الإيطالي',
+                bundesliga: 'الدوري الألماني',
+                ligue1: 'الدوري الفرنسي',
+                championsLeague: 'دوري أبطال أوروبا',
+                europaLeague: 'الدوري الأوروبي',
+                worldCup: 'كأس العالم',
+                arabLeagues: 'الدوريات العربية',
+                otherLeagues: 'دوريات أخرى',
+                watchLive: '🔴 شاهد مباشر',
+                preview: '📺 معاينة البث',
+                noMatches: 'لا توجد مباريات متاحة',
+                selectStream: 'اختر مصدر البث',
+                stream: 'بث',
+                hdStream: 'بث HD',
+                altStream: 'بث بديل',
+                hqStream: 'بث جودة عالية',
+                vs: 'ضد',
+                finished: 'انتهت',
+                notStarted: 'لم تبدأ بعد',
+                soon: 'قريباً',
+                liveNowStatus: 'مباشر الآن',
+                firstHalf: 'الشوط الأول',
+                secondHalf: 'الشوط الثاني',
+                note: '⚠️ ملاحظة: الروابط توضيحية. للحصول على روابط البث الحقيقية، يجب التكامل مع Camel Live API'
+            },
+            fr: {
+                siteName: 'Streaming en Direct',
+                liveNow: 'En Direct',
+                upcoming: 'Matchs à Venir',
+                results: 'Résultats',
+                all: 'Tous',
+                football: 'Football',
+                basketball: 'Basketball',
+                tennis: 'Tennis',
+                matches: 'Matchs',
+                premierLeague: 'Premier League Anglaise',
+                laLiga: 'La Liga Espagnole',
+                serieA: 'Serie A Italienne',
+                bundesliga: 'Bundesliga Allemande',
+                ligue1: 'Ligue 1 Française',
+                championsLeague: 'Ligue des Champions',
+                europaLeague: 'Ligue Europa',
+                worldCup: 'Coupe du Monde',
+                arabLeagues: 'Ligues Arabes',
+                otherLeagues: 'Autres Ligues',
+                watchLive: '🔴 Regarder en Direct',
+                preview: '📺 Aperçu du Stream',
+                noMatches: 'Aucun match disponible',
+                selectStream: 'Choisir une source de stream',
+                stream: 'Stream',
+                hdStream: 'Stream HD',
+                altStream: 'Stream Alternatif',
+                hqStream: 'Stream Haute Qualité',
+                vs: 'vs',
+                finished: 'Terminé',
+                notStarted: 'Pas encore commencé',
+                soon: 'Bientôt',
+                liveNowStatus: 'En Direct',
+                firstHalf: 'Première Mi-Temps',
+                secondHalf: 'Deuxième Mi-Temps',
+                note: '⚠️ Note: Liens de démonstration. Pour obtenir de vrais liens de streaming, vous devez intégrer l\'API Camel Live'
+            }
+        };
+
+        let currentLang = localStorage.getItem('language') || 'ar';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'fr' : 'ar';
+            localStorage.setItem('language', currentLang);
+            document.documentElement.setAttribute('lang', currentLang);
+            document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            updateUILanguage();
+            renderMatches();
+        }
+
+        function updateUILanguage() {
+            const t = translations[currentLang];
+            document.getElementById('siteName').textContent = t.siteName;
+            document.getElementById('liveTitle').textContent = t.liveNow;
+            document.getElementById('upcomingTitle').textContent = t.upcoming;
+            document.getElementById('resultsTitle').textContent = t.results;
+            document.getElementById('tab-all').textContent = t.all;
+            document.getElementById('tab-football').textContent = t.football;
+            document.getElementById('tab-basketball').textContent = t.basketball;
+            document.getElementById('tab-tennis').textContent = t.tennis;
+            document.getElementById('langIcon').textContent = currentLang === 'ar' ? '🇫🇷 FR' : '🇸🇦 AR';
+            const placeholder = document.getElementById('streamPlaceholder');
+            if (placeholder) placeholder.textContent = t.selectStream;
+        }
+
+        function getTranslation(key) {
+            return translations[currentLang][key] || key;
+        }
+
+        const API_CONFIG = {
+            camelLiveUrl: 'https://www.camel1.live/',
+            updateInterval: 120000,
+            timeout: 20000,
+            retryAttempts: 3,
+            corsProxies: [
+                'https://api.allorigins.win/raw?url=',
+                'https://corsproxy.io/?',
+                'https://api.codetabs.com/v1/proxy?quest=',
+                'https://thingproxy.freeboard.io/fetch/'
+            ]
+        };
+
+        let matchesData = { live: [], upcoming: [], results: [] };
+        let isLoading = false;
+        let lastFetchTime = null;
+        let currentProxyIndex = 0;
+        let currentSport = 'all';
+
+        function renderMatches() {
+            renderMatchSection('liveMatches', matchesData.live, true);
+            renderMatchSection('upcomingMatches', matchesData.upcoming, false);
+            renderMatchSection('resultsMatches', matchesData.results, false, true);
+        }
+
+        function renderMatchSection(containerId, matches, isLive, isResult = false) {
+            const container = document.getElementById(containerId);
+            const filteredMatches = currentSport === 'all' ? matches : matches.filter(m => m.sport === currentSport);
+
+            if (filteredMatches.length === 0) {
+                container.innerHTML = `<div class="empty-state"><div class="empty-state-icon">⚽</div><div>${getTranslation('noMatches')}</div></div>`;
+                return;
+            }
+
+            const matchesByLeague = groupMatchesByLeague(filteredMatches);
+            container.innerHTML = Object.entries(matchesByLeague).map(([league, leagueMatches]) => `
+                <div class="league-section">
+                    <div class="league-header">
+                        <span class="league-icon">${getLeagueIcon(league)}</span>
+                        <span class="league-name">${currentLang === 'fr' ? getLeagueFrenchName(league) : league}</span>
+                        <span class="league-count">${leagueMatches.length} ${getTranslation('matches')}</span>
+                    </div>
+                    <div class="matches-grid">
+                        ${leagueMatches.map(match => renderMatchCard(match, isLive, isResult)).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function groupMatchesByLeague(matches) {
+            const grouped = {};
+            matches.forEach(match => {
+                const league = match.league || getTranslation('otherLeagues');
+                if (!grouped[league]) grouped[league] = [];
+                grouped[league].push(match);
+            });
+            return grouped;
+        }
+
+        function getLeagueIcon(league) {
+            const icons = {
+                'الدوري الإنجليزي الممتاز': '🏴󠁧󠁢󠁥󠁮󠁧󠁿', 'Premier League': '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+                'الدوري الإسباني': '🇪🇸', 'La Liga': '🇪🇸',
+                'الدوري الإيطالي': '🇮🇹', 'Serie A': '🇮🇹',
+                'الدوري الألماني': '🇩🇪', 'Bundesliga': '🇩🇪',
+                'الدوري الفرنسي': '🇫🇷', 'Ligue 1': '🇫🇷',
+                'دوري أبطال أوروبا': '🏆', 'Champions League': '🏆',
+                'الدوري الأوروبي': '🥈', 'Europa League': '🥈',
+                'كأس العالم': '🌍', 'World Cup': '🌍',
+                'دوريات عربية': '🌙', 'Arab Leagues': '🌙'
+            };
+            return icons[league] || '⚽';
+        }
+
+        function getLeagueFrenchName(league) {
+            const frenchNames = {
+                'الدوري الإنجليزي الممتاز': 'Premier League Anglaise',
+                'الدوري الإسباني': 'La Liga Espagnole',
+                'الدوري الإيطالي': 'Serie A Italienne',
+                'الدوري الألماني': 'Bundesliga Allemande',
+                'الدوري الفرنسي': 'Ligue 1 Française',
+                'دوري أبطال أوروبا': 'Ligue des Champions',
+                'الدوري الأوروبي': 'Ligue Europa',
+                'كأس العالم': 'Coupe du Monde',
+                'دوريات عربية': 'Ligues Arabes',
+                'دوريات أخرى': 'Autres Ligues'
+            };
+            return frenchNames[league] || league;
+        }
+
+        function renderMatchCard(match, isLive, isResult) {
+            return `
+                <div class="match-card" onclick="${isLive || (!isResult && match.streams && match.streams.length > 0) ? `openStream(${match.id})` : ''}">
+                    <div class="match-league">
+                        ${currentLang === 'fr' ? match.leagueFr || match.league : match.league}
+                        ${match.time ? `<span class="match-time">${match.time}</span>` : ''}
+                    </div>
+                    <div class="match-teams">
+                        <div class="team">
+                            <span class="team-name">${currentLang === 'fr' ? match.homeTeamFr || match.homeTeam : match.homeTeam}</span>
+                            ${match.homeScore !== undefined ? `<span class="team-score">${match.homeScore}</span>` : ''}
+                        </div>
+                        <div class="team">
+                            <span class="team-name">${currentLang === 'fr' ? match.awayTeamFr || match.awayTeam : match.awayTeam}</span>
+                            ${match.awayScore !== undefined ? `<span class="team-score">${match.awayScore}</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="match-status">${currentLang === 'fr' ? match.statusFr || match.status : match.status}</div>
+                    ${!isResult && match.streams && match.streams.length > 0 ? `
+                        <div class="match-actions">
+                            <button class="btn btn-primary" onclick="event.stopPropagation(); openStream(${match.id})">
+                                ${isLive ? getTranslation('watchLive') : getTranslation('preview')}
+                            </button>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        function openStream(matchId) {
+            const allMatches = [...matchesData.live, ...matchesData.upcoming, ...matchesData.results];
+            const match = allMatches.find(m => m.id === matchId);
+            if (!match || !match.streams || match.streams.length === 0) return;
+
+            const modal = document.getElementById('streamModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const streamContainer = document.getElementById('streamContainer');
+            const streamOptions = document.getElementById('streamOptions');
+
+            const homeTeam = currentLang === 'fr' ? match.homeTeamFr || match.homeTeam : match.homeTeam;
+            const awayTeam = currentLang === 'fr' ? match.awayTeamFr || match.awayTeam : match.awayTeam;
+            modalTitle.textContent = `${homeTeam} ${getTranslation('vs')} ${awayTeam}`;
+            
+            streamOptions.innerHTML = match.streams.map((stream, index) => `
+                <button class="stream-btn ${index === 0 ? 'active' : ''}" onclick="loadStream('${stream.url}', this)">
+                    ${currentLang === 'fr' ? stream.nameFr || stream.name : stream.name}
+                </button>
+            `).join('');
+
+            streamContainer.innerHTML = `<div style="color: var(--color-white);">${getTranslation('note')}</div>`;
+            modal.classList.add('active');
+        }
+
+        function loadStream(url, button) {
+            const streamContainer = document.getElementById('streamContainer');
+            const allBtns = document.querySelectorAll('.stream-btn');
+            allBtns.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            streamContainer.innerHTML = `<iframe src="${url}" allowfullscreen></iframe>`;
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('streamModal');
+            modal.classList.remove('active');
+            const streamContainer = document.getElementById('streamContainer');
+            streamContainer.innerHTML = `<div id="streamPlaceholder">${getTranslation('selectStream')}</div>`;
+        }
+
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentSport = btn.dataset.sport;
+                renderMatches();
+            });
+        });
+
+        document.getElementById('streamModal').addEventListener('click', (e) => {
+            if (e.target.id === 'streamModal') closeModal();
+        });
+
+        async function fetchFromCamelLive() {
+            if (isLoading) return null;
+            isLoading = true;
+            try {
+                console.log('🔄 جاري الاتصال بـ Camel Live...');
+                for (let attempt = 0; attempt < API_CONFIG.retryAttempts; attempt++) {
+                    for (let i = 0; i < API_CONFIG.corsProxies.length; i++) {
+                        try {
+                            const proxy = API_CONFIG.corsProxies[currentProxyIndex];
+                            const url = proxy + encodeURIComponent(API_CONFIG.camelLiveUrl);
+                            console.log(`محاولة ${attempt + 1}.${i + 1}: ${proxy.split('//')[1].split('/')[0]}`);
+                            const controller = new AbortController();
+                            const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.timeout);
+                            const response = await fetch(url, {
+                                method: 'GET',
+                                signal: controller.signal,
+                                headers: {
+                                    'Accept': 'text/html,application/xhtml+xml',
+                                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+                                    'Cache-Control': 'no-cache'
+                                }
+                            });
+                            clearTimeout(timeoutId);
+                            if (response.ok) {
+                                const html = await response.text();
+                                if (html.length < 100) {
+                                    console.warn('⚠️ استجابة قصيرة جداً');
+                                    continue;
+                                }
+                                const parser = new DOMParser();
+                                const doc = parser.parseFromString(html, 'text/html');
+                                const data = parseMatchesFromHTML(doc);
+                                if (data && (data.live.length > 0 || data.upcoming.length > 0)) {
+                                    console.log('✅ تم الاتصال بنجاح!');
+                                    console.log(`📊 البيانات: ${data.live.length} مباشر, ${data.upcoming.length} قادمة, ${data.results.length} نتائج`);
+                                    lastFetchTime = new Date();
+                                    localStorage.setItem('lastSuccessfulProxy', currentProxyIndex.toString());
+                                    return data;
+                                }
+                            }
+                            currentProxyIndex = (currentProxyIndex + 1) % API_CONFIG.corsProxies.length;
+                        } catch (err) {
+                            console.warn(`فشل Proxy ${i + 1}:`, err.message);
+                            currentProxyIndex = (currentProxyIndex + 1) % API_CONFIG.corsProxies.length;
+                            if (i < API_CONFIG.corsProxies.length - 1) {
+                                await new Promise(resolve => setTimeout(resolve, 500));
+                            }
+                            continue;
+                        }
+                    }
+                    if (attempt < API_CONFIG.retryAttempts - 1) {
+                        console.log('⏳ انتظار قبل المحاولة التالية...');
+                        await new Promise(resolve => setTimeout(resolve, 2000));
+                    }
+                }
+                throw new Error('فشلت جميع محاولات الاتصال');
+            } catch (error) {
+                console.error('❌ خطأ:', error.message);
+                console.log('📊 التبديل إلى البيانات التجريبية');
+                return generateDemoData();
+            } finally {
+                isLoading = false;
+            }
+        }
+        
+        function generateDemoData() {
+            console.log('📊 استخدام بيانات تجريبية');
+            return {
+                live: [
+                    {
+                        id: 1, league: 'الدوري الإنجليزي الممتاز', leagueFr: 'Premier League Anglaise', sport: 'football',
+                        homeTeam: 'مانشستر سيتي', homeTeamFr: 'Manchester City', awayTeam: 'ليفربول', awayTeamFr: 'Liverpool',
+                        homeScore: 2, awayScore: 1, time: '67\'', status: 'الشوط الثاني', statusFr: 'Deuxième Mi-Temps',
+                        streams: [
+                            { name: 'بث HD', nameFr: 'Stream HD', url: 'https://www.camel1.live/live/match1' },
+                            { name: 'بث بديل', nameFr: 'Stream Alternatif', url: 'https://www.camel1.live/stream/match1' },
+                            { name: 'بث جودة عالية', nameFr: 'Stream HQ', url: 'https://www.camel1.live/hd/match1' }
+                        ]
+                    },
+                    {
+                        id: 2, league: 'الدوري الإسباني', leagueFr: 'La Liga Espagnole', sport: 'football',
+                        homeTeam: 'ريال مدريد', homeTeamFr: 'Real Madrid', awayTeam: 'برشلونة', awayTeamFr: 'FC Barcelone',
+                        homeScore: 1, awayScore: 1, time: '34\'', status: 'الشوط الأول', statusFr: 'Première Mi-Temps',
+                        streams: [
+                            { name: 'بث 1', nameFr: 'Stream 1', url: 'https://www.camel1.live/live/match2' },
+                            { name: 'بث 2', nameFr: 'Stream 2', url: 'https://www.camel1.live/stream/match2' }
+                        ]
+                    }
+                ],
+                upcoming: [
+                    {
+                        id: 3, league: 'دوري أبطال أوروبا', leagueFr: 'Ligue des Champions', sport: 'football',
+                        homeTeam: 'بايرن ميونخ', homeTeamFr: 'Bayern Munich', awayTeam: 'باريس سان جيرمان', awayTeamFr: 'Paris Saint-Germain',
+                        time: '21:00', status: 'لم تبدأ بعد', statusFr: 'Pas encore commencé',
+                        streams: [
+                            { name: 'بث 1', nameFr: 'Stream 1', url: 'https://www.camel1.live/live/match3' },
+                            { name: 'بث 2', nameFr: 'Stream 2', url: 'https://www.camel1.live/stream/match3' }
+                        ]
+                    },
+                    {
+                        id: 4, league: 'الدوري الإيطالي', leagueFr: 'Serie A Italienne', sport: 'football',
+                        homeTeam: 'يوفنتوس', homeTeamFr: 'Juventus', awayTeam: 'إنتر ميلان', awayTeamFr: 'Inter Milan',
+                        time: '20:45', status: 'قريباً', statusFr: 'Bientôt',
+                        streams: [{ name: 'بث مباشر', nameFr: 'Stream Live', url: 'https://www.camel1.live/live/match4' }]
+                    }
+                ],
+                results: [
+                    {
+                        id: 5, league: 'الدوري الألماني', leagueFr: 'Bundesliga Allemande', sport: 'football',
+                        homeTeam: 'دورتموند', homeTeamFr: 'Borussia Dortmund', awayTeam: 'بايرن ميونخ', awayTeamFr: 'Bayern Munich',
+                        homeScore: 2, awayScore: 3, status: 'انتهت', statusFr: 'Terminé', streams: []
+                    }
+                ]
+            };
+        }
+
+        function parseMatchesFromHTML(doc) {
+            const live = [], upcoming = [], results = [];
+            try {
+                const possibleSelectors = ['article', '.card', '.item', '.box', '[class*="match"]', '[class*="game"]', '[class*="fixture"]', '[class*="event"]', '[data-match]', '[data-game]'];
+                let matchElements = [];
+                for (const selector of possibleSelectors) {
+                    const elements = doc.querySelectorAll(selector);
+                    if (elements.length > 2) {
+                        matchElements = elements;
+                        console.log(`✅ عثر على ${elements.length} عناصر: ${selector}`);
+                        break;
+                    }
+                }
+                if (matchElements.length === 0) {
+                    console.warn('⚠️ لم يتم العثور على مباريات');
+                    return null;
+                }
+                let validMatches = 0;
+                matchElements.forEach((element, index) => {
+                    try {
+                        const match = extractMatchData(element, index);
+                        if (match && match.homeTeam && match.awayTeam) {
+                            validMatches++;
+                            if (match.isLive) live.push(match);
+                            else if (match.isFinished) results.push(match);
+                            else upcoming.push(match);
+                        }
+                    } catch (err) {}
+                });
+                console.log(`📊 مباريات صالحة: ${validMatches} (${live.length} مباشر, ${upcoming.length} قادمة, ${results.length} نتائج)`);
+                if (validMatches === 0) return null;
+                return { live, upcoming, results };
+            } catch (error) {
+                console.error('خطأ في التحليل:', error);
+                return null;
+            }
+        }
+
+        function extractMatchData(element, index) {
+            const match = { id: Date.now() + index, sport: 'football', streams: [] };
+            const text = element.textContent;
+            const teamSelectors = ['h3', 'h4', 'h5', '.team', '[class*="team"]', '.name', 'strong', 'b', 'span'];
+            const teams = [];
+            for (const selector of teamSelectors) {
+                const elements = element.querySelectorAll(selector);
+                if (elements.length >= 2) {
+                    const team1 = elements[0].textContent.trim();
+                    const team2 = elements[1].textContent.trim();
+                    if (team1.length > 2 && team2.length > 2 && team1 !== team2) {
+                        teams.push(team1, team2);
+                        break;
+                    }
+                }
+            }
+            if (teams.length < 2) {
+                const vsMatch = text.match(/([^0-9\n]{3,30})\s*(?:vs|ضد|-)\s*([^0-9\n]{3,30})/i);
+                if (vsMatch) teams.push(vsMatch[1].trim(), vsMatch[2].trim());
+            }
+            match.homeTeam = teams[0] || null;
+            match.awayTeam = teams[1] || null;
+            if (!match.homeTeam || !match.awayTeam) return null;
+            const scoreMatch = text.match(/(\d+)\s*[-:]\s*(\d+)/);
+            if (scoreMatch) {
+                match.homeScore = parseInt(scoreMatch[1]);
+                match.awayScore = parseInt(scoreMatch[2]);
+            }
+            const timeMatch = text.match(/(\d{1,2}:\d{2}|الآن|live|\d+')/i);
+            if (timeMatch) match.time = timeMatch[0];
+            const leagueSelectors = ['.league', '.tournament', '.competition', '[class*="league"]', '[class*="tournament"]', 'small', '.subtitle'];
+            for (const selector of leagueSelectors) {
+                const el = element.querySelector(selector);
+                if (el && el.textContent.trim().length > 3) {
+                    match.league = el.textContent.trim();
+                    break;
+                }
+            }
+            if (!match.league) {
+                const leagueMatch = text.match(/(دوري|كأس|بطولة|league|cup|champions)[^0-9\n]{3,40}/i);
+                if (leagueMatch) match.league = leagueMatch[0].trim().substring(0, 40);
+            }
+            match.league = match.league || (currentLang === 'fr' ? 'Match Amical' : 'مباراة ودية');
+            match.league = normalizeLeagueName(match.league);
+            const lowerText = text.toLowerCase();
+            match.isLive = lowerText.includes('live') || lowerText.includes('مباشر') || lowerText.includes('بث') || match.homeScore !== undefined;
+            match.isFinished = lowerText.includes('انتهت') || lowerText.includes('finished') || lowerText.includes('ft') || lowerText.includes('نهاية');
+            match.status = match.isLive ? 'مباشر الآن' : match.isFinished ? 'انتهت' : 'قريباً';
+            const links = element.querySelectorAll('a[href]');
+            links.forEach((link, i) => {
+                const href = link.getAttribute('href');
+                if (href && !href.startsWith('#') && !href.includes('javascript')) {
+                    const fullUrl = href.startsWith('http') ? href : API_CONFIG.camelLiveUrl + href.replace(/^\//, '');
+                    match.streams.push({ name: link.textContent.trim() || `بث ${i + 1}`, url: fullUrl });
+                }
+            });
+            if (match.streams.length === 0 && (match.isLive || !match.isFinished)) {
+                match.streams.push(
+                    { name: 'بث مباشر', url: `${API_CONFIG.camelLiveUrl}live/${match.id}` },
+                    { name: 'بث بديل', url: `${API_CONFIG.camelLiveUrl}stream/${match.id}` }
+                );
+            }
+            return match;
+        }
+
+        function normalizeLeagueName(league) {
+            const leagueMap = {
+                'premier league': 'الدوري الإنجليزي الممتاز', 'epl': 'الدوري الإنجليزي الممتاز', 'english premier': 'الدوري الإنجليزي الممتاز',
+                'la liga': 'الدوري الإسباني', 'spanish league': 'الدوري الإسباني', 'liga': 'الدوري الإسباني',
+                'serie a': 'الدوري الإيطالي', 'italian league': 'الدوري الإيطالي', 'calcio': 'الدوري الإيطالي',
+                'bundesliga': 'الدوري الألماني', 'german league': 'الدوري الألماني',
+                'ligue 1': 'الدوري الفرنسي', 'french league': 'الدوري الفرنسي',
+                'champions league': 'دوري أبطال أوروبا', 'ucl': 'دوري أبطال أوروبا', 'uefa champions': 'دوري أبطال أوروبا',
+                'europa league': 'الدوري الأوروبي', 'uel': 'الدوري الأوروبي',
+                'world cup': 'كأس العالم', 'fifa world cup': 'كأس العالم',
+                'saudi league': 'دوريات عربية', 'egyptian league': 'دوريات عربية',
+                'قطر': 'دوريات عربية', 'الإمارات': 'دوريات عربية', 'السعودية': 'دوريات عربية', 'مصر': 'دوريات عربية'
+            };
+            const lowerLeague = league.toLowerCase();
+            for (const [key, value] of Object.entries(leagueMap)) {
+                if (lowerLeague.includes(key)) return value;
+            }
+            return league;
+        }
+
+        async function updateMatches() {
+            if (isLoading) {
+                console.log('⏳ جاري التحديث...');
+                return;
+            }
+            console.log('🔄 بدء التحديث...');
+            const data = await fetchFromCamelLive();
+            if (data && (data.live.length > 0 || data.upcoming.length > 0)) {
+                matchesData = data;
+                console.log(`✅ نجح: ${data.live.length} مباشر, ${data.upcoming.length} قادمة`);
+            } else {
+                console.log('📊 استخدام بيانات تجريبية');
+                matchesData = generateDemoData();
+            }
+            renderMatches();
+        }
+
+        (async function init() {
+            console.log('🚀 تحميل الموقع...');
+            console.log('📍 البيئة: GitHub + Vercel');
+            currentLang = localStorage.getItem('language') || 'ar';
+            document.documentElement.setAttribute('lang', currentLang);
+            document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            updateUILanguage();
+            const savedProxy = localStorage.getItem('lastSuccessfulProxy');
+            if (savedProxy) {
+                currentProxyIndex = parseInt(savedProxy);
+                console.log('♻️ استخدام Proxy الناجح السابق');
+            }
+            matchesData = generateDemoData();
+            renderMatches();
+            setTimeout(() => { updateMatches(); }, 1000);
+        })();
+
+        setInterval(updateMatches, API_CONFIG.updateInterval);
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden && lastFetchTime) {
+                const elapsed = new Date() - lastFetchTime;
+                if (elapsed > API_CONFIG.updateInterval) {
+                    console.log('🔄 تحديث بعد العودة للصفحة');
+                    updateMatches();
+                }
+            }
+        });
+        window.addEventListener('error', (e) => { console.error('⚠️ خطأ عام:', e.message); });
+        window.addEventListener('beforeunload', () => {
+            if (matchesData && matchesData.live.length > 0) {
+                try {
+                    localStorage.setItem('cachedMatches', JSON.stringify({ data: matchesData, timestamp: Date.now() }));
+                } catch (e) { console.warn('فشل حفظ البيانات المؤقتة'); }
+            }
+        });
+    </script>
+</body>
+</html>
