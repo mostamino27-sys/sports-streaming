@@ -16,110 +16,40 @@
                 --border: rgba(119, 124, 124, 0.3); --error: #ff5459; --secondary: rgba(119, 124, 124, 0.15);
             }
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-            background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh;
-        }
-        .header {
-            background: var(--surface); border-bottom: 1px solid var(--border);
-            padding: 16px 24px; position: sticky; top: 0; z-index: 100;
-        }
-        .header-content {
-            max-width: 1200px; margin: 0 auto; display: flex;
-            justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
-        }
-        .logo {
-            font-size: 24px; font-weight: 600; color: var(--primary);
-            display: flex; align-items: center; gap: 8px;
-        }
+        body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 24px; position: sticky; top: 0; z-index: 100; }
+        .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+        .logo { font-size: 24px; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 8px; }
         .nav-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
-        .tab-btn {
-            padding: 8px 16px; background: transparent; border: 1px solid var(--border);
-            border-radius: 8px; color: var(--text); cursor: pointer;
-            font-size: 14px; font-weight: 500; transition: all 0.2s;
-        }
+        .tab-btn { padding: 8px 16px; background: transparent; border: 1px solid var(--border); border-radius: 8px; color: var(--text); cursor: pointer; font-size: 14px; font-weight: 500; transition: all 0.2s; }
         .tab-btn:hover { background: var(--secondary); }
-        .tab-btn.active {
-            background: var(--primary); color: white; border-color: var(--primary);
-        }
-        .lang-btn {
-            padding: 8px 16px; background: var(--secondary); border: 1px solid var(--border);
-            border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500;
-        }
+        .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .lang-btn { padding: 8px 16px; background: var(--secondary); border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500; }
         .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
-        .section-title {
-            font-size: 20px; font-weight: 600; margin-bottom: 20px;
-            display: flex; align-items: center; gap: 8px;
-        }
-        .live-badge {
-            display: inline-flex; align-items: center; gap: 4px;
-            background: var(--error); color: white;
-            padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;
-        }
-        .live-dot {
-            width: 8px; height: 8px; background: white;
-            border-radius: 50%; animation: pulse 2s infinite;
-        }
+        .section-title { font-size: 20px; font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+        .live-badge { display: inline-flex; align-items: center; gap: 4px; background: var(--error); color: white; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; }
+        .live-dot { width: 8px; height: 8px; background: white; border-radius: 50%; animation: pulse 2s infinite; }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
         .league-section { margin-bottom: 32px; }
-        .league-header {
-            display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
-            padding: 16px; background: var(--surface); border-radius: 12px;
-            border: 1px solid var(--border);
-        }
+        .league-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; padding: 16px; background: var(--surface); border-radius: 12px; border: 1px solid var(--border); }
         .league-icon { font-size: 24px; }
         .league-name { font-size: 18px; font-weight: 600; flex: 1; }
-        .league-count {
-            background: var(--secondary); padding: 4px 12px;
-            border-radius: 20px; font-size: 12px;
-        }
-        .matches-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;
-        }
-        .match-card {
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.2s;
-        }
-        .match-card:hover {
-            transform: translateY(-2px); border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .match-league {
-            color: #626c71; font-size: 12px; font-weight: 500;
-            margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
-        }
-        .match-time {
-            background: var(--secondary); padding: 4px 8px;
-            border-radius: 6px; font-size: 11px;
-        }
-        .match-teams {
-            display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px;
-        }
-        .team {
-            display: flex; align-items: center; justify-content: space-between; gap: 12px;
-        }
+        .league-count { background: var(--secondary); padding: 4px 12px; border-radius: 20px; font-size: 12px; }
+        .matches-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+        .match-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; cursor: pointer; transition: all 0.2s; }
+        .match-card:hover { transform: translateY(-2px); border-color: var(--primary); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .match-league { color: #626c71; font-size: 12px; font-weight: 500; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .match-time { background: var(--secondary); padding: 4px 8px; border-radius: 6px; font-size: 11px; }
+        .match-teams { display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px; }
+        .team { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
         .team-name { font-size: 16px; font-weight: 550; flex: 1; }
-        .team-score {
-            font-size: 24px; font-weight: 600; color: var(--primary);
-            min-width: 40px; text-align: center;
-        }
-        .match-status {
-            text-align: center; padding: 8px 0; margin: 12px 0;
-            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-            font-size: 12px; color: #626c71;
-        }
-        .btn {
-            width: 100%; padding: 8px 16px; border: none;
-            border-radius: 8px; font-size: 14px; font-weight: 500;
-            cursor: pointer; transition: all 0.2s;
-        }
+        .team-score { font-size: 24px; font-weight: 600; color: var(--primary); min-width: 40px; text-align: center; }
+        .match-status { text-align: center; padding: 8px 0; margin: 12px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); font-size: 12px; color: #626c71; }
+        .btn { width: 100%; padding: 8px 16px; border: none; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s; }
         .btn-primary { background: var(--primary); color: white; }
         .btn-primary:hover { opacity: 0.9; }
         .empty-state { text-align: center; padding: 32px; color: #626c71; }
-        @media (max-width: 768px) {
-            .header-content { flex-direction: column; }
-            .matches-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 768px) { .matches-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -133,54 +63,34 @@
                     <button class="tab-btn" data-sport="basketball" id="tab-basketball">كرة السلة</button>
                     <button class="tab-btn" data-sport="tennis" id="tab-tennis">التنس</button>
                 </nav>
-                <button class="lang-btn" onclick="toggleLang()">
-                    <span id="langIcon">🇫🇷 FR</span>
-                </button>
+                <button class="lang-btn" onclick="toggleLang()"><span id="langIcon">🇫🇷 FR</span></button>
             </div>
         </div>
     </header>
 
     <main class="container">
-        <h2 class="section-title">
-            <span class="live-badge"><span class="live-dot"></span><span id="liveTitle">مباشر الآن</span></span>
-        </h2>
+        <h2 class="section-title"><span class="live-badge"><span class="live-dot"></span><span id="liveTitle">مباشر الآن</span></span></h2>
         <div id="liveMatches"></div>
-
         <h2 class="section-title" style="margin-top: 32px" id="upcomingTitle">المباريات القادمة</h2>
         <div id="upcomingMatches"></div>
-
         <h2 class="section-title" style="margin-top: 32px" id="resultsTitle">النتائج</h2>
         <div id="resultsMatches"></div>
     </main>
 
     <script>
         const t = {
-            ar: { siteName: 'بث مباشر', liveNow: 'مباشر الآن', upcoming: 'المباريات القادمة', results: 'النتائج', all: 'الكل', football: 'كرة القدم', basketball: 'كرة السلة', tennis: 'التنس', matches: 'مباريات', watchLive: '🔴 شاهد مباشر', noMatches: 'لا توجد مباريات متاحة', vs: 'ضد', finished: 'انتهت', soon: 'قريباً' },
-            fr: { siteName: 'Streaming Direct', liveNow: 'En Direct', upcoming: 'Matchs à Venir', results: 'Résultats', all: 'Tous', football: 'Football', basketball: 'Basketball', tennis: 'Tennis', matches: 'Matchs', watchLive: '🔴 Regarder', noMatches: 'Aucun match', vs: 'vs', finished: 'Terminé', soon: 'Bientôt' }
+            ar: { siteName: 'بث مباشر', liveNow: 'مباشر الآن', upcoming: 'المباريات القادمة', results: 'النتائج', all: 'الكل', football: 'كرة القدم', basketball: 'كرة السلة', tennis: 'التنس', matches: 'مباريات', watchLive: '🔴 شاهد مباشر', noMatches: 'لا توجد مباريات متاحة' },
+            fr: { siteName: 'Streaming Direct', liveNow: 'En Direct', upcoming: 'Matchs à Venir', results: 'Résultats', all: 'Tous', football: 'Football', basketball: 'Basketball', tennis: 'Tennis', matches: 'Matchs', watchLive: '🔴 Regarder', noMatches: 'Aucun match' }
         };
         
-        let lang = localStorage.getItem('lang') || 'ar';
-        let sport = 'all';
-        let data = {
-            live: [
-                { id: 1, league: 'الدوري الإنجليزي', leagueFr: 'Premier League', sport: 'football', homeTeam: 'مانشستر سيتي', homeTeamFr: 'Man City', awayTeam: 'ليفربول', awayTeamFr: 'Liverpool', homeScore: 2, awayScore: 1, time: '67\'', status: 'الشوط الثاني', statusFr: '2ème Mi-Temps', url: 'https://www.camel1.live/' },
-                { id: 2, league: 'الدوري الإسباني', leagueFr: 'La Liga', sport: 'football', homeTeam: 'ريال مدريد', homeTeamFr: 'Real Madrid', awayTeam: 'برشلونة', awayTeamFr: 'Barcelona', homeScore: 1, awayScore: 1, time: '34\'', status: 'الشوط الأول', statusFr: '1ère Mi-Temps', url: 'https://www.camel1.live/' }
-            ],
-            upcoming: [
-                { id: 3, league: 'دوري الأبطال', leagueFr: 'Champions League', sport: 'football', homeTeam: 'بايرن', homeTeamFr: 'Bayern', awayTeam: 'باريس', awayTeamFr: 'PSG', time: '21:00', status: 'قريباً', statusFr: 'Bientôt', url: 'https://www.camel1.live/' }
-            ],
-            results: [
-                { id: 4, league: 'الدوري الألماني', leagueFr: 'Bundesliga', sport: 'football', homeTeam: 'دورتموند', homeTeamFr: 'Dortmund', awayTeam: 'بايرن', awayTeamFr: 'Bayern', homeScore: 2, awayScore: 3, status: 'انتهت', statusFr: 'Terminé' }
-            ]
-        };
+        let lang = localStorage.getItem('lang') || 'ar', sport = 'all', data = { live: [], upcoming: [], results: [] };
 
         function toggleLang() {
             lang = lang === 'ar' ? 'fr' : 'ar';
             localStorage.setItem('lang', lang);
             document.documentElement.setAttribute('lang', lang);
             document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-            update();
-            render();
+            update(); render();
         }
 
         function update() {
@@ -212,7 +122,7 @@
 
             const byLeague = {};
             filtered.forEach(m => {
-                const league = lang === 'fr' ? m.leagueFr : m.league;
+                const league = lang === 'fr' ? m.leagueFr || m.league : m.league;
                 if (!byLeague[league]) byLeague[league] = [];
                 byLeague[league].push(m);
             });
@@ -227,21 +137,18 @@
                     <div class="matches-grid">
                         ${ms.map(m => `
                             <div class="match-card" ${m.url && !isResult ? `onclick="openMatch('${m.url}')"` : ''}>
-                                <div class="match-league">
-                                    ${league}
-                                    ${m.time ? `<span class="match-time">${m.time}</span>` : ''}
-                                </div>
+                                <div class="match-league">${league}${m.time ? ` <span class="match-time">${m.time}</span>` : ''}</div>
                                 <div class="match-teams">
                                     <div class="team">
-                                        <span class="team-name">${lang === 'fr' ? m.homeTeamFr : m.homeTeam}</span>
+                                        <span class="team-name">${lang === 'fr' ? m.homeTeamFr || m.homeTeam : m.homeTeam}</span>
                                         ${m.homeScore !== undefined ? `<span class="team-score">${m.homeScore}</span>` : ''}
                                     </div>
                                     <div class="team">
-                                        <span class="team-name">${lang === 'fr' ? m.awayTeamFr : m.awayTeam}</span>
+                                        <span class="team-name">${lang === 'fr' ? m.awayTeamFr || m.awayTeam : m.awayTeam}</span>
                                         ${m.awayScore !== undefined ? `<span class="team-score">${m.awayScore}</span>` : ''}
                                     </div>
                                 </div>
-                                <div class="match-status">${lang === 'fr' ? m.statusFr : m.status}</div>
+                                <div class="match-status">${lang === 'fr' ? m.statusFr || m.status : m.status}</div>
                                 ${m.url && !isResult ? `<button class="btn btn-primary" onclick="event.stopPropagation(); openMatch('${m.url}')">${t[lang].watchLive}</button>` : ''}
                             </div>
                         `).join('')}
@@ -251,18 +158,40 @@
         }
 
         function openMatch(url) {
-            const w = window.screen.width;
-            const h = window.screen.height;
-            const mobile = w <= 768;
-            
+            const w = window.screen.width, h = window.screen.height, mobile = w <= 768;
             if (mobile) {
                 window.open(url, '_blank');
             } else {
-                const width = Math.min(w * 0.9, 1400);
-                const height = Math.min(h * 0.85, 900);
-                const left = (w - width) / 2;
-                const top = (h - height) / 2;
+                const width = Math.min(w * 0.9, 1400), height = Math.min(h * 0.85, 900);
+                const left = (w - width) / 2, top = (h - height) / 2;
                 window.open(url, '_blank', `width=${width},height=${height},left=${left},top=${top},resizable=yes`);
+            }
+        }
+
+        async function fetchData() {
+            try {
+                const res = await fetch('/api/matches');
+                const result = await res.json();
+                if (result.success && result.data) {
+                    data = result.data;
+                    console.log('✅ تم تحميل البيانات من API');
+                    render();
+                }
+            } catch (err) {
+                console.log('⚠️ استخدام بيانات تجريبية');
+                data = {
+                    live: [
+                        { id: 1, league: 'الدوري الإنجليزي', leagueFr: 'Premier League', sport: 'football', homeTeam: 'مانشستر سيتي', homeTeamFr: 'Man City', awayTeam: 'ليفربول', awayTeamFr: 'Liverpool', homeScore: 2, awayScore: 1, time: '67\'', status: 'الشوط الثاني', statusFr: '2ème Mi-Temps', url: 'https://www.camel1.live/' },
+                        { id: 2, league: 'الدوري الإسباني', leagueFr: 'La Liga', sport: 'football', homeTeam: 'ريال مدريد', homeTeamFr: 'Real Madrid', awayTeam: 'برشلونة', awayTeamFr: 'Barcelona', homeScore: 1, awayScore: 1, time: '34\'', status: 'الشوط الأول', statusFr: '1ère Mi-Temps', url: 'https://www.camel1.live/' }
+                    ],
+                    upcoming: [
+                        { id: 3, league: 'دوري الأبطال', leagueFr: 'Champions League', sport: 'football', homeTeam: 'بايرن', homeTeamFr: 'Bayern', awayTeam: 'باريس', awayTeamFr: 'PSG', time: '21:00', status: 'قريباً', statusFr: 'Bientôt', url: 'https://www.camel1.live/' }
+                    ],
+                    results: [
+                        { id: 4, league: 'الدوري الألماني', leagueFr: 'Bundesliga', sport: 'football', homeTeam: 'دورتموند', homeTeamFr: 'Dortmund', awayTeam: 'بايرن', awayTeamFr: 'Bayern', homeScore: 2, awayScore: 3, status: 'انتهت', statusFr: 'Terminé' }
+                    ]
+                };
+                render();
             }
         }
 
@@ -278,7 +207,8 @@
         document.documentElement.setAttribute('lang', lang);
         document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
         update();
-        render();
+        fetchData();
+        setInterval(fetchData, 120000);
     </script>
 </body>
 </html>
